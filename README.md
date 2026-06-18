@@ -1,63 +1,121 @@
-# PixxaOwenStereo
+# Stereo
 
-A BetterDiscord plugin that forces stereo voice transport and a high Opus bitrate for Discord voice connections.
+> A BetterDiscord plugin that forces stereo voice transport and high-quality Opus encoding for Discord voice connections.
 
 ## Features
 
-- Forces stereo (2-channel) voice encoding
-- Sets voice bitrate to 512 kbps
-- Configures Opus encoder parameters
+- Stereo (2-channel) voice encoding
+- 512 kbps voice bitrate
+- 48 kHz sample rate
+- Automatic voice connection patching
 - Disables Forward Error Correction (FEC)
-- Warns if Discord voice processing features may interfere with audio quality
+- Warns when Discord voice processing may affect audio quality
+- No configuration required
 
-## Requirements
-
-- BetterDiscord
-- Latest Discord Desktop
+---
 
 ## Installation
 
-1. Download `PixxaOwenStereo.plugin.js`
-2. Place it inside:
+1. Download the latest `PixxaOwenStereo.plugin.js`.
+2. Move the file to your BetterDiscord plugins folder.
 
-```
-BetterDiscord/plugins
+Default Windows location:
+
+```text
+%AppData%\BetterDiscord\plugins
 ```
 
-3. Enable the plugin from BetterDiscord.
+3. Open Discord.
+4. Go to **Settings → BetterDiscord → Plugins**.
+5. Enable **PixxaOwenStereo**.
+
+---
 
 ## Recommended Discord Settings
 
-For best results disable:
+For the best audio quality, disable the following Discord voice processing options:
 
 - Echo Cancellation
 - Noise Suppression
 - Noise Cancellation (if available)
 
-The plugin will display a warning if these are enabled.
+Stereo will automatically notify you if any of these settings are enabled.
 
-## How it works
+---
 
-The plugin patches Discord voice connection creation and transport configuration to enforce stereo Opus parameters before the transport options are applied.
+## What does this plugin do?
 
-Main changes include:
+Stereo patches Discord's internal voice transport before a voice connection is established and applies optimized Opus encoder settings, including:
 
-- Stereo encoding
-- 512 kbps bitrate
-- 48 kHz sample rate
-- Disabled FEC
-- Opus stereo SDP parameters
+| Setting | Value |
+|---------|------:|
+| Channels | 2 |
+| Bitrate | 512000 bps |
+| Sample Rate | 48000 Hz |
+| Stereo | Enabled |
+| sprop-stereo | Enabled |
+| Forward Error Correction | Disabled |
+
+These changes are applied automatically every time a voice connection is created.
+
+---
 
 ## Compatibility
 
-Tested with current BetterDiscord builds.
+- BetterDiscord
+- Discord Desktop
+- Windows
+- Linux
+- macOS
 
-Future Discord updates may require plugin updates.
+Because Discord frequently changes its internal implementation, future updates may temporarily break compatibility until the plugin is updated.
+
+---
+
+## Limitations
+
+This plugin only modifies the client-side voice transport configuration.
+
+Final audio quality still depends on factors such as:
+
+- Discord server limitations
+- Voice channel settings
+- Network quality
+- Microphone quality
+- Discord backend behavior
+
+---
 
 ## Disclaimer
 
-This plugin relies on Discord's internal implementation and may stop working after Discord updates.
+Stereo is an unofficial BetterDiscord plugin.
+
+This project is **not affiliated with, endorsed by, or supported by Discord Inc. or BetterDiscord**.
+
+Use at your own risk.
+
+---
 
 ## License
 
-MIT License
+This project is licensed under the **MIT License**.
+
+See the [LICENSE](LICENSE) file for more information.
+
+---
+
+## Author
+
+**iblamepixxa**
+
+GitHub: https://github.com/iblamepixxa
+
+Repository: https://github.com/iblamepixxa/stereo
+
+---
+
+## Contributing
+
+Issues, suggestions, and pull requests are welcome.
+
+If you encounter a bug after a Discord update, please open an issue with as much information as possible.
